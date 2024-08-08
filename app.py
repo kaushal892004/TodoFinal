@@ -28,17 +28,43 @@ with app.app_context():
     db.create_all()
 
 # Define the route for the home page
-@app.route('/',methods = ['GET','POST'])
+# @app.route('/',methods = ['GET','POST'])
+# def hello_world():
+#     if request.method == 'POST':
+#         title = request.form['title']
+#         Desc = request.form['Desc']
+#         Todo = ToDoWebApp(title = title , Desc = Desc)
+#         db.session.add(Todo)
+#         db.session.commit()
+#     alltodo = ToDoWebApp.query.all()
+#     # print(alltodo)
+#     return render_template('index.html',alltodo = alltodo)
+@app.route('/', methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
-        title = request.form['title']
-        Desc = request.form['Desc']
-        Todo = ToDoWebApp(title = title , Desc = Desc)
-        db.session.add(Todo)
-        db.session.commit()
-    alltodo = ToDoWebApp.query.all()
-    # print(alltodo)
-    return render_template('index.html',alltodo = alltodo)
+        try:
+            title = request.form.get('title')
+            Desc = request.form.get('Desc')
+
+            # Validate input data
+            if not title or not Desc:
+                return "Title and Description are required!", 400
+
+            Todo = ToDoWebApp(title=title, Desc=Desc)
+            db.session.add(Todo)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()  # Rollback the session in case of error
+            return f"An error occurred: {str(e)}", 500
+
+    try:
+        alltodo = ToDoWebApp.query.all()
+    except Exception as e:
+        return f"An error occurred while fetching data: {str(e)}", 500
+
+    return render_template('index.html', alltodo=alltodo)
+
 
 # Define the route for the hello page
 @app.route('/show')
@@ -47,38 +73,93 @@ def show():
     # print(alltodo)
     return 'Hello, User'
 
-@app.route('/update/<int:sno>',methods = ['GET','POST'])
+# @app.route('/update/<int:sno>',methods = ['GET','POST'])
+# def update(sno):
+#     if request.method == 'POST':
+#         title = request.form['title']
+#         Desc = request.form['Desc']
+#         ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+#         ToDo.title = title
+#         ToDo.Desc = Desc
+#         db.session.add(ToDo)
+#         db.session.commit()
+#         return redirect('/')
+
+#     ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+#     return render_template('update.html',ToDo=ToDo) 
+@app.route('/update/<int:sno>', methods=['GET', 'POST'])
 def update(sno):
-    if request.method == 'POST':
-        title = request.form['title']
-        Desc = request.form['Desc']
+    try:
+        if request.method == 'POST':
+            title = request.form['title']
+            Desc = request.form['Desc']
+            ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+            if ToDo:
+                ToDo.title = title
+                ToDo.Desc = Desc
+                db.session.add(ToDo)
+                db.session.commit()
+                return redirect('/')
+            else:
+                return "ToDo item not found", 404
+
         ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
-        ToDo.title = title
-        ToDo.Desc = Desc
-        db.session.add(ToDo)
-        db.session.commit()
-        return redirect('/')
+        return render_template('update.html', ToDo=ToDo)
+    except Exception as e:
+        return f"An error occurred: {str(e)}", 500
 
-    ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
-    return render_template('update.html',ToDo=ToDo) 
 
-@app.route('/delete/<int:sno>')
+# @app.route('/delete/<int:sno>')
+# def delete(sno):
+#     ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+#     db.session.delete(ToDo)
+#     db.session.commit()
+#     return redirect('/')
+
+# @app.route('/about')
+# def about():
+#     return render_template('about.html')
+
+# @app.route('/home')
+# def home():
+#     return render_template('home.html')
+
+# # Run the Flask app
+# if __name__ == "__main__":
+#     # app.run(host="0.0.0.0",debug = True,port=int(os.environ.get("PORT", 5000)))
+#     app.run(debug=False,port=5000)
+
+
+@app.route('/delete/<int:sno>', methods=['POST'])
 def delete(sno):
-    ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
-    db.session.delete(ToDo)
-    db.session.commit()
-    return redirect('/')
+    try:
+        ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+        if ToDo:
+            db.session.delete(ToDo)
+            db.session.commit()
+            return redirect('/')
+        else:
+            return "ToDo item not found.", 404
+    except Exception as e:
+        db.session.rollback()  # Rollback the session in case of error
+        return f"An error occurred: {str(e)}", 500
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    try:
+        return render_template('about.html')
+    except Exception as e:
+        return f"An error occurred while rendering the page: {str(e)}", 500
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    try:
+        return render_template('home.html')
+    except Exception as e:
+        return f"An error occurred while rendering the page: {str(e)}", 500
 
 # Run the Flask app
 if __name__ == "__main__":
-    # app.run(host="0.0.0.0",debug = True,port=int(os.environ.get("PORT", 5000)))
-    app.run(debug=True,port=5000)
+    # Run with host "0.0.0.0" for public accessibility and with debug=False for production
+    app.run(host="0.0.0.0", debug=False, port=int(os.environ.get("PORT", 5000)))
 
