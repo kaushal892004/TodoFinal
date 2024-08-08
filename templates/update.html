@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update
+{% endblock title %}
+
+{% block body %}
+    <!-- Form -->
+    <div class="container my-3">
+      <h2>Update ToDo</h2>
+      <form action="/update/{{ToDo.sno}}" method="POST">
+        <div class="mb-3">
+          <label for="title" class="form-label">ToDo Title</label>
+          <input type="text" class="form-control" name="title" value="{{ ToDo.title }}" id="title" aria-describedby="todotitle">
+        </div>
+        <div class="mb-3">
+          <label for="Desc" class="form-label">ToDo Description</label>
+          <input type="text" class="form-control" name="Desc" value="{{ ToDo.Desc }}" id="Desc">
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Update</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock body %}
