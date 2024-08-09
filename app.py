@@ -131,7 +131,21 @@ def update(sno):
 #     app.run(debug=False,port=5000)
 
 
-@app.route('/delete/<int:sno>', methods=['POST'])
+# @app.route('/delete/<int:sno>', methods=['POST'])
+# def delete(sno):
+#     try:
+#         ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
+#         if ToDo:
+#             db.session.delete(ToDo)
+#             db.session.commit()
+#             return redirect('/')
+#         else:
+#             return "ToDo item not found.", 404
+#     except Exception as e:
+#         db.session.rollback()  # Rollback the session in case of error
+#         return f"An error occurred: {str(e)}", 500
+
+@app.route('/delete/<int:sno>', methods=['POST', 'DELETE'])
 def delete(sno):
     try:
         ToDo = ToDoWebApp.query.filter_by(sno=sno).first()
@@ -144,6 +158,7 @@ def delete(sno):
     except Exception as e:
         db.session.rollback()  # Rollback the session in case of error
         return f"An error occurred: {str(e)}", 500
+
 
 @app.route('/about')
 def about():
