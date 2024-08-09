@@ -48,10 +48,23 @@ Home
             <td>{{ToDo.title}}</td>
             <td>{{ToDo.Desc}}</td>
             <td>{{ToDo.date_created}}</td>
-            <td>
+            <!-- <td>
               <a href="/update/{{ToDo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
               <a href="/delete/{{ToDo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
-            </td>
+            </td> -->
+            <td>
+              <a href="/update/{{ToDo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+              
+              <!-- Form for deleting the ToDo item -->
+              <!-- <form action="/delete/{{ToDo.sno}}" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-outline-dark btn-sm mx-1" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+              </form> -->
+              <form action="/delete/{{ToDo.sno}}" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+            </form>
+            
+          </td>
+          
           </tr>
           {% endfor %}
         </tbody>
