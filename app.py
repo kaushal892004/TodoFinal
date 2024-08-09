@@ -7,7 +7,8 @@ import os
 app = Flask(__name__)
 
 # Configure the SQLAlchemy part of the app instance
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///ToDoWebApp.db"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///ToDoWebApp.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/ToDoWebApp.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Create the SQLAlchemy db instance
