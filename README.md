@@ -27,9 +27,10 @@ Check out the live demo [here](https://todo-webapp-kaushal.vercel.app/).
 
 ## 🎨 Screenshots
 
-![Screenshot 1](Images/Screenshot 1.png)
-![Screenshot 1](Images/Screenshot 2.png)
-![Screenshot 1](Images/Screenshot 3.png)
+![Screenshot 1](Images/Screenshot%201.png)
+![Screenshot 2](Images/Screenshot%202.png)
+![Screenshot 3](Images/Screenshot%203.png)
+
 
 
 ## 🤝 Contributing
