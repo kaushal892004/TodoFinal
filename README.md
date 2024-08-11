@@ -1,11 +1,5 @@
 # Todo Web App
 
-![License](https://img.shields.io/github/license/yourusername/todo-web-app)
-![Contributors](https://img.shields.io/github/contributors/yourusername/todo-web-app)
-![Forks](https://img.shields.io/github/forks/yourusername/todo-web-app)
-![Stars](https://img.shields.io/github/stars/yourusername/todo-web-app)
-![Issues](https://img.shields.io/github/issues/yourusername/todo-web-app)
-
 This project is a simple Todo web application built using [Python Flask](https://flask.palletsprojects.com/) for the backend and [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), and [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for the frontend.
 
 ## 🚀 Features
@@ -33,9 +27,9 @@ Check out the live demo [here](https://todo-webapp-kaushal.vercel.app/).
 
 ## 🎨 Screenshots
 
-![Screenshot 1](images/Screenshot 1)
-![Screenshot 1](images/Screenshot 2)
-![Screenshot 1](images/Screenshot 3)
+![Screenshot 1](images/Screenshot 1.png)
+![Screenshot 1](images/Screenshot 2.png)
+![Screenshot 1](images/Screenshot 3.png)
 
 
 ## 🤝 Contributing
@@ -52,9 +46,6 @@ Contributions are what make the open-source community such an amazing place to l
 
 If you like this project, please consider giving it a ⭐ on GitHub and sharing it with your friends. You can also follow me on [GitHub](https://github.com/yourusername) for more projects.
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📢 Acknowledgments
 
@@ -64,4 +55,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-### Made with ❤️ by [Your Name](https://github.com/yourusername)
+### Made with ❤️ by [Kaushal Parmar](https://github.com/kaushal892004)
