@@ -33,8 +33,10 @@ Check out the live demo [here](https://todo-webapp-kaushal.vercel.app/).
 
 ## 🎨 Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
+![Screenshot 1](images/Screenshot 1)
+![Screenshot 1](images/Screenshot 2)
+![Screenshot 1](images/Screenshot 3)
+
 
 ## 🤝 Contributing
 
