@@ -11,7 +11,7 @@ This project is a simple Todo web application built using [Python Flask](https:/
 
 ## 🎯 Live Demo
 
-<p align="center">
+<p align="left">
   <a href="https://todo-webapp-kaushal.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Launch-Demo-blue?style=for-the-badge&logo=google-chrome" alt="Live Demo">
   </a>
@@ -19,12 +19,6 @@ This project is a simple Todo web application built using [Python Flask](https:/
 
 Check out the live demo by clicking the button above!
 
-
-## 🚀 **Live Demo**
-
-> **Check out the live demo [here](https://yourappdemo.com)** 🌐
-
-Experience the application in action by visiting the live demo. Try out the features and see how it works in real-time!
 
 
 
